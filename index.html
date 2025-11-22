@@ -32,7 +32,7 @@
         .logo {
             font-size: 26px;
             font-weight: 700;
-            color: #1a73e8;
+            color: #e74c3c;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -73,8 +73,8 @@
         }
         
         nav a:hover, nav a.active {
-            background-color: #e8f0fe;
-            color: #1a73e8;
+            background-color: #fdedec;
+            color: #e74c3c;
         }
         
         .btn {
@@ -87,48 +87,68 @@
         }
         
         .btn-primary {
-            background-color: #1a73e8;
+            background-color: #e74c3c;
             color: white;
         }
         
         .btn-primary:hover {
-            background-color: #0d62d9;
+            background-color: #d62c1a;
         }
         
         .btn-outline {
-            background-color: transparent;
-            border: 2px solid #1a73e8;
-            color: #1a73e8;
+            background-color: #f0f0f0;
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
         }
         
         .btn-outline:hover {
-            background-color: #e8f0fe;
+            background-color: #fdedec;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
-            padding: 40px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+            padding: 60px 20px;
             text-align: center;
             margin-bottom: 20px;
-            color: white;
+            color: #333;
             border-radius: 0 0 20px 20px;
+            border-bottom: 3px solid #e74c3c;
         }
         
         .hero h1 {
-            font-size: 32px;
+            font-size: 36px;
             margin-bottom: 20px;
-            color: white;
+            color: #e74c3c;
             font-weight: 700;
         }
         
         .hero p {
-            margin-bottom: 20px;
-            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            color: #555;
             font-size: 18px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+        }
+        
+        .book-now-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 40px;
+        }
+        
+        .book-now-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+            background-color: #d62c1a;
         }
         
         /* Quick Access */
@@ -143,20 +163,20 @@
         }
         
         .quick div {
-            background-color: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
+            background-color: #f0f0f0;
             padding: 15px;
             border-radius: 12px;
             cursor: pointer;
-            color: white;
+            color: #e74c3c;
             text-align: center;
             transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid #e0e0e0;
         }
         
         .quick div:hover {
-            background-color: rgba(255,255,255,0.25);
+            background-color: #fdedec;
             transform: translateY(-3px);
+            border-color: #e74c3c;
         }
         
         .quick i {
@@ -193,12 +213,12 @@
             box-shadow: 0 4px 15px rgba(0,0,0,.08);
             overflow: hidden;
             transition: .3s;
-            border: 1px solid #e8e8e8;
+            border: 1px solid #e0e0e0;
         }
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(26,115,232,0.15);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.15);
         }
         
         .card img {
@@ -216,7 +236,7 @@
             font-weight: 600;
             margin-bottom: 15px;
             text-align: center;
-            color: #1a73e8;
+            color: #e74c3c;
         }
         
         .proceed-buttons {
@@ -236,22 +256,22 @@
         }
         
         .proceed-btn-1 {
-            background: #1a73e8;
+            background: #e74c3c;
             color: #fff;
         }
         
         .proceed-btn-2 {
-            background: #4285f4;
+            background: #ec7063;
             color: #fff;
         }
         
         .proceed-btn-3 {
-            background: #669df6;
+            background: #f1948a;
             color: #fff;
         }
         
         .proceed-btn-4 {
-            background: #8ab4f8;
+            background: #f5b7b1;
             color: #fff;
         }
         
@@ -275,7 +295,7 @@
         }
         
         footer a:hover {
-            color: #8ab4f8;
+            color: #f1948a;
         }
         
         /* Modal Styles */
@@ -303,7 +323,7 @@
         }
         
         .modal-content h2 {
-            color: #1a73e8;
+            color: #e74c3c;
             margin-bottom: 20px;
         }
         
@@ -324,7 +344,7 @@
         }
         
         .modal-content input:focus {
-            border-color: #1a73e8;
+            border-color: #e74c3c;
             outline: none;
         }
         
@@ -333,7 +353,7 @@
             width: 100%;
             padding: 12px;
             border-radius: 8px;
-            background: #1a73e8;
+            background: #e74c3c;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -343,7 +363,7 @@
         }
         
         .modal-content button:hover {
-            background: #0d62d9;
+            background: #d62c1a;
         }
         
         .close {
@@ -355,7 +375,7 @@
         }
         
         .close:hover {
-            color: #1a73e8;
+            color: #e74c3c;
         }
         
         /* Responsive Styles */
@@ -404,10 +424,10 @@
         /* Section Headers */
         h2 {
             font-size: 28px;
-            color: #1a73e8;
+            color: #e74c3c;
             margin: 30px 0 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #e8f0fe;
+            border-bottom: 2px solid #fdedec;
         }
     </style>
 </head>
@@ -447,6 +467,8 @@
         <section class="hero">
             <h1>Book Everything in One Place</h1>
             <p>Movies, Flights, Trains, Buses, Cabs, Tours, Visa, Cruise, Forex, Insurance, Concerts, Hotels — all at your fingertips!</p>
+            <button class="book-now-btn">Book Now</button>
+            
             <div class="quick">
                 <div data-page="movies"><i class="fas fa-film"></i><br>Movies</div>
                 <div data-page="flights"><i class="fas fa-plane"></i><br>Flights</div>
@@ -689,25 +711,13 @@
         </div>
     </div>
 
-    <!-- Tours & Attractions -->
+    <!-- Tours -->
     <div class="page" id="tours">
         <div class="container">
-            <h2>🗺️ Tours & Attractions</h2>
+            <h2>🗺️ Tours & Activities</h2>
             <div class="cards">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800">
-                    <div class="card-content">
-                        <div class="card-title">Book Tours & Activities</div>
-                        <div class="proceed-buttons">
-                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('tours', 1)">Viator</button>
-                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('tours', 2)">GetYourGuide</button>
-                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('tours', 3)">Tripadvisor</button>
-                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('tours', 4)">Klook</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b">
                     <div class="card-content">
                         <div class="card-title">Adventure Tours</div>
                         <div class="proceed-buttons">
@@ -719,9 +729,21 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4">
+                    <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b">
                     <div class="card-content">
                         <div class="card-title">Cultural Experiences</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('tours', 1)">Viator</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('tours', 2)">GetYourGuide</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('tours', 3)">Tripadvisor</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('tours', 4)">Klook</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4">
+                    <div class="card-content">
+                        <div class="card-title">City Sightseeing</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('tours', 1)">Viator</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('tours', 2)">GetYourGuide</button>
@@ -737,12 +759,12 @@
     <!-- Visa -->
     <div class="page" id="visa">
         <div class="container">
-            <h2>🛂 Visa</h2>
+            <h2>🛂 Visa Services</h2>
             <div class="cards">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f">
                     <div class="card-content">
-                        <div class="card-title">Apply for Visa</div>
+                        <div class="card-title">Visa Application</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('visa', 1)">VisaHQ</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('visa', 2)">iVisa</button>
@@ -764,9 +786,9 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1594736797933-d0e2133c1c92">
+                    <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07">
                     <div class="card-content">
-                        <div class="card-title">Visa Processing Services</div>
+                        <div class="card-title">Document Assistance</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('visa', 1)">VisaHQ</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('visa', 2)">iVisa</button>
@@ -787,7 +809,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5">
                     <div class="card-content">
-                        <div class="card-title">Book Your Cruise</div>
+                        <div class="card-title">Luxury Cruise Packages</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('cruise', 1)">Royal Caribbean</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('cruise', 2)">Carnival</button>
@@ -799,7 +821,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1516496636080-14fb876e029d">
                     <div class="card-content">
-                        <div class="card-title">Luxury Cruise Packages</div>
+                        <div class="card-title">Family Cruise Vacations</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('cruise', 1)">Royal Caribbean</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('cruise', 2)">Carnival</button>
@@ -811,7 +833,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13">
                     <div class="card-content">
-                        <div class="card-title">Family Cruise Vacations</div>
+                        <div class="card-title">Adventure Cruises</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('cruise', 1)">Royal Caribbean</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('cruise', 2)">Carnival</button>
@@ -824,15 +846,15 @@
         </div>
     </div>
 
-    <!-- Forex Card & Currency -->
+    <!-- Forex -->
     <div class="page" id="forex">
         <div class="container">
-            <h2>💳 Forex Card & Currency</h2>
+            <h2>💳 Forex & Currency</h2>
             <div class="cards">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c">
                     <div class="card-content">
-                        <div class="card-title">Forex Services</div>
+                        <div class="card-title">Forex Cards</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('forex', 1)">Thomas Cook</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('forex', 2)">BookMyForex</button>
@@ -856,7 +878,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1601597119248-b144a7989d6c">
                     <div class="card-content">
-                        <div class="card-title">Travel Money Cards</div>
+                        <div class="card-title">Travel Money</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('forex', 1)">Thomas Cook</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('forex', 2)">BookMyForex</button>
@@ -869,7 +891,7 @@
         </div>
     </div>
 
-    <!-- Travel Insurance -->
+    <!-- Insurance -->
     <div class="page" id="insurance">
         <div class="container">
             <h2>🛡️ Travel Insurance</h2>
@@ -877,7 +899,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29">
                     <div class="card-content">
-                        <div class="card-title">Travel Insurance Plans</div>
+                        <div class="card-title">Comprehensive Travel Insurance</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('insurance', 1)">PolicyBazaar</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('insurance', 2)">ICICI Lombard</button>
@@ -889,7 +911,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
                     <div class="card-content">
-                        <div class="card-title">International Travel Insurance</div>
+                        <div class="card-title">International Travel Cover</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('insurance', 1)">PolicyBazaar</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('insurance', 2)">ICICI Lombard</button>
@@ -901,7 +923,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07">
                     <div class="card-content">
-                        <div class="card-title">Comprehensive Travel Cover</div>
+                        <div class="card-title">Family Travel Insurance</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('insurance', 1)">PolicyBazaar</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('insurance', 2)">ICICI Lombard</button>
@@ -922,7 +944,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2">
                     <div class="card-content">
-                        <div class="card-title">Book Concert Tickets</div>
+                        <div class="card-title">Live Music Events</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('concerts', 1)">BookMyShow</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('concerts', 2)">Insider</button>
@@ -934,7 +956,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1507878866276-a947ef722fee">
                     <div class="card-content">
-                        <div class="card-title">Live Music Events</div>
+                        <div class="card-title">Music Festivals</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('concerts', 1)">BookMyShow</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('concerts', 2)">Insider</button>
@@ -946,7 +968,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063">
                     <div class="card-content">
-                        <div class="card-title">Music Festivals</div>
+                        <div class="card-title">International Artists</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('concerts', 1)">BookMyShow</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('concerts', 2)">Insider</button>
@@ -967,7 +989,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb2101a">
                     <div class="card-content">
-                        <div class="card-title">Book Your Hotel</div>
+                        <div class="card-title">Luxury Stays</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('hotels', 1)">MakeMyTrip</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('hotels', 2)">Booking.com</button>
@@ -979,7 +1001,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
                     <div class="card-content">
-                        <div class="card-title">Luxury Stays</div>
+                        <div class="card-title">Budget Accommodations</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('hotels', 1)">MakeMyTrip</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('hotels', 2)">Booking.com</button>
@@ -991,7 +1013,7 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461">
                     <div class="card-content">
-                        <div class="card-title">Budget Accommodations</div>
+                        <div class="card-title">Resorts & Villas</div>
                         <div class="proceed-buttons">
                             <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('hotels', 1)">MakeMyTrip</button>
                             <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('hotels', 2)">Booking.com</button>
@@ -1045,7 +1067,7 @@
 
     <footer>
         <div class="container flex">
-            <p>© 2025 BookMate. All Rights Reserved.<br> $ MTech CSE-AIDS T.Omkar Saicharan 2501050207.<br> KL Univercity</p>
+            <p>© 2025 BookMate. All Rights Reserved.<br> $ MTech CSE-AIDS T.Omkar Satcharan 2501050207.<br> KL Univercity</p>
             <p><a href="#">Privacy</a> | <a href="#">Terms</a></p>
         </div>
     </footer>
@@ -1101,7 +1123,7 @@
                     4: "https://www.ixigo.com/"
                 },
                 buses: {
-                    1: "https://www.abhibus.com/?utm_source=bing&utm_medium=cpc&utm_campaign=Search_RT_Nov25&msclkid=774165237ad81ac9d12a0c02291d8f74&utm_source=bing&utm_medium=cpc&utm_campaign=Search_RT_Nov%2725&utm_term=bus%20offers&utm_content=Search_RT_GWS_Nov25",
+                    1: "https://www.abhibus.com/",
                     2: "https://www.redbus.in/",
                     3: "https://www.mybusticket.com/",
                     4: "https://www.goibibo.com/bus/"
