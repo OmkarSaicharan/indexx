@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMate - All in One Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        
+        .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #5f6368;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: #e8f0fe;
+            color: #1a73e8;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #1a73e8;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0d62d9;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #1a73e8;
+            color: #1a73e8;
+        }
+        
+        .btn-outline:hover {
+            background-color: #e8f0fe;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+            font-size: 18px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Quick Access */
+        .quick {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .quick div {
+            background-color: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .quick div:hover {
+            background-color: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
+        }
+        
+        .quick i {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        /* Page Sections */
+        .page {
+            display: none;
+            animation: fade 0.4s;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+            overflow: hidden;
+            transition: .3s;
+            border: 1px solid #e8e8e8;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(26,115,232,0.15);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #1a73e8;
+        }
+        
+        .proceed-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .proceed-btn {
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .proceed-btn-1 {
+            background: #1a73e8;
+            color: #fff;
+        }
+        
+        .proceed-btn-2 {
+            background: #4285f4;
+            color: #fff;
+        }
+        
+        .proceed-btn-3 {
+            background: #669df6;
+            color: #fff;
+        }
+        
+        .proceed-btn-4 {
+            background: #8ab4f8;
+            color: #fff;
+        }
+        
+        .proceed-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: #202124;
+            color: #e8eaed;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        footer a {
+            color: #e8eaed;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: #8ab4f8;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .modal-content h2 {
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        
+        .modal-content label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #5f6368;
+        }
+        
+        .modal-content input, .modal-content select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #dadce0;
+            font-size: 16px;
+        }
+        
+        .modal-content input:focus {
+            border-color: #1a73e8;
+            outline: none;
+        }
+        
+        .modal-content button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            background: #1a73e8;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .modal-content button:hover {
+            background: #0d62d9;
+        }
+        
+        .close {
+            float: right;
+            font-size: 22px;
+            cursor: pointer;
+            color: #5f6368;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: #1a73e8;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .flex {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 26px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .quick {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav ul {
+                gap: 8px;
+            }
+            
+            nav a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+        }
+        
+        /* Section Headers */
+        h2 {
+            font-size: 28px;
+            color: #1a73e8;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8f0fe;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container flex">
+            <div class="logo"><i class="fas fa-bookmark"></i> BookMate</div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="movies">Movies</a></li>
+                    <li><a href="#" class="nav-link" data-page="flights">Flights</a></li>
+                    <li><a href="#" class="nav-link" data-page="trains">Trains</a></li>
+                    <li><a href="#" class="nav-link" data-page="buses">Buses</a></li>
+                    <li><a href="#" class="nav-link" data-page="cabs">Cabs</a></li>
+                    <li><a href="#" class="nav-link" data-page="tours">Tours</a></li>
+                    <li><a href="#" class="nav-link" data-page="visa">Visa</a></li>
+                    <li><a href="#" class="nav-link" data-page="cruise">Cruise</a></li>
+                    <li><a href="#" class="nav-link" data-page="forex">Forex</a></li>
+                    <li><a href="#" class="nav-link" data-page="insurance">Insurance</a></li>
+                    <li><a href="#" class="nav-link" data-page="concerts">Concerts</a></li>
+                    <li><a href="#" class="nav-link" data-page="hotels">Hotels</a></li>
+                </ul>
+            </nav>
+            <div>
+                <button class="btn btn-outline" id="openSignin">Sign In</button>
+                <button class="btn btn-primary" id="openSignup">Sign Up</button>
+                <button class="btn btn-outline" id="openProfile" title="Profile">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home -->
+    <div class="page active" id="home">
+        <section class="hero">
+            <h1>Book Everything in One Place</h1>
+            <p>Movies, Flights, Trains, Buses, Cabs, Tours, Visa, Cruise, Forex, Insurance, Concerts, Hotels — all at your fingertips!</p>
+            <div class="quick">
+                <div data-page="movies"><i class="fas fa-film"></i><br>Movies</div>
+                <div data-page="flights"><i class="fas fa-plane"></i><br>Flights</div>
+                <div data-page="trains"><i class="fas fa-train"></i><br>Trains</div>
+                <div data-page="buses"><i class="fas fa-bus"></i><br>Buses</div>
+                <div data-page="cabs"><i class="fas fa-taxi"></i><br>Cabs</div>
+                <div data-page="tours"><i class="fas fa-map-marked-alt"></i><br>Tours</div>
+                <div data-page="visa"><i class="fas fa-passport"></i><br>Visa</div>
+                <div data-page="cruise"><i class="fas fa-ship"></i><br>Cruise</div>
+                <div data-page="forex"><i class="fas fa-money-bill-wave"></i><br>Forex</div>
+                <div data-page="insurance"><i class="fas fa-shield-alt"></i><br>Insurance</div>
+                <div data-page="concerts"><i class="fas fa-music"></i><br>Concerts</div>
+                <div data-page="hotels"><i class="fas fa-hotel"></i><br>Hotels</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Movies -->
+    <div class="page" id="movies">
+        <div class="container">
+            <h2>🎬 Movies</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4">
+                    <div class="card-content">
+                        <div class="card-title">Book Your Movie Tickets</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('movies', 1)">BookMyShow</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('movies', 2)">PVR Cinemas</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('movies', 3)">INOX</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('movies', 4)">Cinepolis</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754">
+                    <div class="card-content">
+                        <div class="card-title">Premium Movie Experience</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('movies', 1)">BookMyShow</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('movies', 2)">PVR Cinemas</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('movies', 3)">INOX</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('movies', 4)">Cinepolis</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1608889175123-7423f4c09f37">
+                    <div class="card-content">
+                        <div class="card-title">Latest Movie Releases</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('movies', 1)">BookMyShow</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('movies', 2)">PVR Cinemas</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('movies', 3)">INOX</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('movies', 4)">Cinepolis</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flights -->
+    <div class="page" id="flights">
+        <div class="container">
+            <h2>✈️ Flights</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92">
+                    <div class="card-content">
+                        <div class="card-title">Book Your Flight</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('flights', 1)">MakeMyTrip</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('flights', 2)">GoIbibo</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('flights', 3)">Cleartrip</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('flights', 4)">Yatra</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa">
+                    <div class="card-content">
+                        <div class="card-title">Domestic & International Flights</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('flights', 1)">MakeMyTrip</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('flights', 2)">GoIbibo</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('flights', 3)">Cleartrip</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('flights', 4)">Yatra</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1485988412941-77a35537dae4">
+                    <div class="card-content">
+                        <div class="card-title">Best Flight Deals</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('flights', 1)">MakeMyTrip</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('flights', 2)">GoIbibo</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('flights', 3)">Cleartrip</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('flights', 4)">Yatra</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trains -->
+    <div class="page" id="trains">
+        <div class="container">
+            <h2>🚆 Trains</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1508264165352-258a6a636bf3">
+                    <div class="card-content">
+                        <div class="card-title">Book Your Train Tickets</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('trains', 1)">IRCTC</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('trains', 2)">ConfirmTkt</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('trains', 3)">RailYatri</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('trains', 4)">Ixigo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19">
+                    <div class="card-content">
+                        <div class="card-title">Railway Reservations</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('trains', 1)">IRCTC</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('trains', 2)">ConfirmTkt</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('trains', 3)">RailYatri</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('trains', 4)">Ixigo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156">
+                    <div class="card-content">
+                        <div class="card-title">Train Booking Services</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('trains', 1)">IRCTC</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('trains', 2)">ConfirmTkt</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('trains', 3)">RailYatri</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('trains', 4)">Ixigo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buses -->
+    <div class="page" id="buses">
+        <div class="container">
+            <h2>🚌 Buses</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1581712614748-785f0a4363af">
+                    <div class="card-content">
+                        <div class="card-title">Book Your Bus Tickets</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('buses', 1)">Abhibus</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('buses', 2)">RedBus</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('buses', 3)">MyBus</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('buses', 4)">GoIbibo Buses</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1576485290812-34c3d3a3b3b9">
+                    <div class="card-content">
+                        <div class="card-title">Intercity Bus Services</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('buses', 1)">Abhibus</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('buses', 2)">RedBus</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('buses', 3)">MyBus</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('buses', 4)">GoIbibo Buses</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
+                    <div class="card-content">
+                        <div class="card-title">Luxury Bus Travel</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('buses', 1)">Abhibus</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('buses', 2)">RedBus</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('buses', 3)">MyBus</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('buses', 4)">GoIbibo Buses</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cabs -->
+    <div class="page" id="cabs">
+        <div class="container">
+            <h2>🚕 Cabs</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7">
+                    <div class="card-content">
+                        <div class="card-title">Book Your Cab</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('cabs', 1)">Uber</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('cabs', 2)">Ola</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('cabs', 3)">Rapido</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('cabs', 4)">Meru</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957">
+                    <div class="card-content">
+                        <div class="card-title">Outstation Cabs</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('cabs', 1)">Uber</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('cabs', 2)">Ola</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('cabs', 3)">Rapido</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('cabs', 4)">Meru</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64">
+                    <div class="card-content">
+                        <div class="card-title">Luxury Cab Services</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('cabs', 1)">Uber</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('cabs', 2)">Ola</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('cabs', 3)">Rapido</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('cabs', 4)">Meru</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tours & Attractions -->
+    <div class="page" id="tours">
+        <div class="container">
+            <h2>🗺️ Tours & Attractions</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800">
+                    <div class="card-content">
+                        <div class="card-title">Book Tours & Activities</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('tours', 1)">Viator</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('tours', 2)">GetYourGuide</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('tours', 3)">Tripadvisor</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('tours', 4)">Klook</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b">
+                    <div class="card-content">
+                        <div class="card-title">Adventure Tours</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('tours', 1)">Viator</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('tours', 2)">GetYourGuide</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('tours', 3)">Tripadvisor</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('tours', 4)">Klook</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4">
+                    <div class="card-content">
+                        <div class="card-title">Cultural Experiences</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('tours', 1)">Viator</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('tours', 2)">GetYourGuide</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('tours', 3)">Tripadvisor</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('tours', 4)">Klook</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visa -->
+    <div class="page" id="visa">
+        <div class="container">
+            <h2>🛂 Visa</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f">
+                    <div class="card-content">
+                        <div class="card-title">Apply for Visa</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('visa', 1)">VisaHQ</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('visa', 2)">iVisa</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('visa', 3)">VisaCentral</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('visa', 4)">Travisa</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1594736797933-d0e2133c1c92">
+                    <div class="card-content">
+                        <div class="card-title">Visa Consultation</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('visa', 1)">VisaHQ</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('visa', 2)">iVisa</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('visa', 3)">VisaCentral</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('visa', 4)">Travisa</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1594736797933-d0e2133c1c92">
+                    <div class="card-content">
+                        <div class="card-title">Visa Processing Services</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('visa', 1)">VisaHQ</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('visa', 2)">iVisa</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('visa', 3)">VisaCentral</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('visa', 4)">Travisa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cruise -->
+    <div class="page" id="cruise">
+        <div class="container">
+            <h2>🛳️ Cruise</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5">
+                    <div class="card-content">
+                        <div class="card-title">Book Your Cruise</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('cruise', 1)">Royal Caribbean</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('cruise', 2)">Carnival</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('cruise', 3)">Norwegian</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('cruise', 4)">Princess</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1516496636080-14fb876e029d">
+                    <div class="card-content">
+                        <div class="card-title">Luxury Cruise Packages</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('cruise', 1)">Royal Caribbean</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('cruise', 2)">Carnival</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('cruise', 3)">Norwegian</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('cruise', 4)">Princess</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13">
+                    <div class="card-content">
+                        <div class="card-title">Family Cruise Vacations</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('cruise', 1)">Royal Caribbean</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('cruise', 2)">Carnival</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('cruise', 3)">Norwegian</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('cruise', 4)">Princess</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forex Card & Currency -->
+    <div class="page" id="forex">
+        <div class="container">
+            <h2>💳 Forex Card & Currency</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c">
+                    <div class="card-content">
+                        <div class="card-title">Forex Services</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('forex', 1)">Thomas Cook</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('forex', 2)">BookMyForex</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('forex', 3)">Weizmann</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('forex', 4)">HDFC Forex</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1604594849809-dfedbc827105">
+                    <div class="card-content">
+                        <div class="card-title">Currency Exchange</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('forex', 1)">Thomas Cook</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('forex', 2)">BookMyForex</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('forex', 3)">Weizmann</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('forex', 4)">HDFC Forex</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1601597119248-b144a7989d6c">
+                    <div class="card-content">
+                        <div class="card-title">Travel Money Cards</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('forex', 1)">Thomas Cook</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('forex', 2)">BookMyForex</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('forex', 3)">Weizmann</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('forex', 4)">HDFC Forex</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Travel Insurance -->
+    <div class="page" id="insurance">
+        <div class="container">
+            <h2>🛡️ Travel Insurance</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29">
+                    <div class="card-content">
+                        <div class="card-title">Travel Insurance Plans</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('insurance', 1)">PolicyBazaar</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('insurance', 2)">ICICI Lombard</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('insurance', 3)">HDFC Ergo</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('insurance', 4)">Bajaj Allianz</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+                    <div class="card-content">
+                        <div class="card-title">International Travel Insurance</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('insurance', 1)">PolicyBazaar</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('insurance', 2)">ICICI Lombard</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('insurance', 3)">HDFC Ergo</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('insurance', 4)">Bajaj Allianz</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07">
+                    <div class="card-content">
+                        <div class="card-title">Comprehensive Travel Cover</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('insurance', 1)">PolicyBazaar</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('insurance', 2)">ICICI Lombard</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('insurance', 3)">HDFC Ergo</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('insurance', 4)">Bajaj Allianz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Concerts -->
+    <div class="page" id="concerts">
+        <div class="container">
+            <h2>🎤 Concerts</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2">
+                    <div class="card-content">
+                        <div class="card-title">Book Concert Tickets</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('concerts', 1)">BookMyShow</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('concerts', 2)">Insider</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('concerts', 3)">Eventbrite</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('concerts', 4)">Ticketmaster</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1507878866276-a947ef722fee">
+                    <div class="card-content">
+                        <div class="card-title">Live Music Events</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('concerts', 1)">BookMyShow</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('concerts', 2)">Insider</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('concerts', 3)">Eventbrite</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('concerts', 4)">Ticketmaster</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063">
+                    <div class="card-content">
+                        <div class="card-title">Music Festivals</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('concerts', 1)">BookMyShow</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('concerts', 2)">Insider</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('concerts', 3)">Eventbrite</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('concerts', 4)">Ticketmaster</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hotels -->
+    <div class="page" id="hotels">
+        <div class="container">
+            <h2>🏨 Hotels</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb2101a">
+                    <div class="card-content">
+                        <div class="card-title">Book Your Hotel</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('hotels', 1)">MakeMyTrip</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('hotels', 2)">Booking.com</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('hotels', 3)">GoIbibo</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('hotels', 4)">OYO</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
+                    <div class="card-content">
+                        <div class="card-title">Luxury Stays</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('hotels', 1)">MakeMyTrip</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('hotels', 2)">Booking.com</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('hotels', 3)">GoIbibo</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('hotels', 4)">OYO</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461">
+                    <div class="card-content">
+                        <div class="card-title">Budget Accommodations</div>
+                        <div class="proceed-buttons">
+                            <button class="proceed-btn proceed-btn-1" onclick="proceedToBooking('hotels', 1)">MakeMyTrip</button>
+                            <button class="proceed-btn proceed-btn-2" onclick="proceedToBooking('hotels', 2)">Booking.com</button>
+                            <button class="proceed-btn proceed-btn-3" onclick="proceedToBooking('hotels', 3)">GoIbibo</button>
+                            <button class="proceed-btn proceed-btn-4" onclick="proceedToBooking('hotels', 4)">OYO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div id="signinModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignin()">&times;</span>
+            <h2>Sign In</h2>
+            <form id="signinForm">
+                <label>Email:</label><input type="email" id="signinEmail" required>
+                <label>Password:</label><input type="password" id="signinPassword" required>
+                <button type="button" onclick="submitSignin()">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignup()">&times;</span>
+            <h2>Create Account</h2>
+            <form id="signupForm">
+                <label>Name:</label><input type="text" id="signupName" required>
+                <label>Email:</label><input type="email" id="signupEmail" required>
+                <label>Password:</label><input type="password" id="signupPassword" required>
+                <label>Confirm Password:</label><input type="password" id="confirmPassword" required>
+                <button type="button" onclick="submitSignup()">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProfile()">&times;</span>
+            <h2>User Profile</h2>
+            <p><strong>Name:</strong> <span id="profileName"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container flex">
+            <p>© 2025 BookMate. All Rights Reserved.<br> $ MTech CSE-AIDS T.Omkar Saicharan 2501050207.<br> KL Univercity</p>
+            <p><a href="#">Privacy</a> | <a href="#">Terms</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let currentUser = null;
+
+        // Navigation
+        document.querySelectorAll('.nav-link,.quick div').forEach(el => el.addEventListener('click', () => {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+            const id = el.getAttribute('data-page');
+            if (id) {
+                document.getElementById(id).classList.add('active');
+                document.querySelectorAll('.nav-link[data-page="' + id + '"]').forEach(n => n.classList.add('active'));
+            }
+            window.scrollTo(0, 0);
+        }));
+
+        // Sign In / Sign Up
+        document.getElementById("openSignin").onclick = () => document.getElementById("signinModal").style.display = "flex";
+        document.getElementById("openSignup").onclick = () => document.getElementById("signupModal").style.display = "flex";
+        function closeSignin() { document.getElementById("signinModal").style.display = "none"; }
+        function closeSignup() { document.getElementById("signupModal").style.display = "none"; }
+        document.getElementById("openProfile").onclick = () => {
+            if (currentUser) {
+                showProfile();
+            } else {
+                document.getElementById("signinModal").style.display = "flex";
+            }
+        };
+
+        // Proceed to Booking Function
+        function proceedToBooking(category, buttonNumber) {
+            // Define URLs for each category and button
+            const bookingLinks = {
+                movies: {
+                    1: "https://in.bookmyshow.com/",
+                    2: "https://www.pvrcinemas.com/",
+                    3: "https://www.inoxmovies.com/",
+                    4: "https://www.cinepolisindia.com/"
+                },
+                flights: {
+                    1: "https://www.makemytrip.com/",
+                    2: "https://www.goibibo.com/",
+                    3: "https://www.cleartrip.com/",
+                    4: "https://www.yatra.com/"
+                },
+                trains: {
+                    1: "https://www.irctc.co.in/",
+                    2: "https://www.confirmtkt.com/",
+                    3: "https://www.railyatri.com/",
+                    4: "https://www.ixigo.com/"
+                },
+                buses: {
+                    1: "https://www.abhibus.com/?utm_source=bing&utm_medium=cpc&utm_campaign=Search_RT_Nov25&msclkid=774165237ad81ac9d12a0c02291d8f74&utm_source=bing&utm_medium=cpc&utm_campaign=Search_RT_Nov%2725&utm_term=bus%20offers&utm_content=Search_RT_GWS_Nov25",
+                    2: "https://www.redbus.in/",
+                    3: "https://www.mybusticket.com/",
+                    4: "https://www.goibibo.com/bus/"
+                },
+                cabs: {
+                    1: "https://www.uber.com/in/en/",
+                    2: "https://www.olacabs.com/",
+                    3: "https://www.rapido.bike/",
+                    4: "https://www.meru.in/"
+                },
+                tours: {
+                    1: "https://www.viator.com/",
+                    2: "https://www.getyourguide.com/",
+                    3: "https://www.tripadvisor.com/",
+                    4: "https://www.klook.com/"
+                },
+                visa: {
+                    1: "https://www.visahq.com/",
+                    2: "https://www.ivisa.com/",
+                    3: "https://www.visacentral.com/",
+                    4: "https://www.travisa.com/"
+                },
+                cruise: {
+                    1: "https://www.royalcaribbean.com/",
+                    2: "https://www.carnival.com/",
+                    3: "https://www.ncl.com/",
+                    4: "https://www.princess.com/"
+                },
+                forex: {
+                    1: "https://www.thomascook.in/",
+                    2: "https://www.bookmyforex.com/",
+                    3: "https://www.weizmann.co.in/",
+                    4: "https://forex.hdfcbank.com/"
+                },
+                insurance: {
+                    1: "https://www.policybazaar.com/",
+                    2: "https://www.icicilombard.com/",
+                    3: "https://www.hdfcergo.com/",
+                    4: "https://www.bajajallianz.com/"
+                },
+                concerts: {
+                    1: "https://www.bookmyshow.com/concerts",
+                    2: "https://insider.in/",
+                    3: "https://www.eventbrite.com/",
+                    4: "https://www.ticketmaster.com/"
+                },
+                hotels: {
+                    1: "https://www.makemytrip.com/hotels/",
+                    2: "https://www.booking.com/",
+                    3: "https://www.goibibo.com/hotels/",
+                    4: "https://www.oyorooms.com/"
+                }
+            };
+
+            // Get the URL based on category and button number
+            const url = bookingLinks[category]?.[buttonNumber];
+            
+            if (url) {
+                // Open the URL in a new tab
+                window.open(url, '_blank');
+            } else {
+                alert("Booking service not available for this category.");
+            }
+        }
+
+        // UPDATED Sign In
+        async function submitSignin() {
+            const email = document.getElementById("signinEmail").value.trim();
+            const password = document.getElementById("signinPassword").value.trim();
+
+            if (!email || !password) {
+                alert("❌ Please fill all the fields!");
+                return;
+            }
+
+            try {
+                const response = await fetch("http://localhost:8080/api/auth/signin", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    currentUser = {
+                        token: result.token,
+                        name: result.name,
+                        email: result.email,
+                        userId: result.userId
+                    };
+
+                    alert("✅ Signed in successfully!");
+                    closeSignin();
+                    document.getElementById("signinForm").reset();
+                    showProfile();
+                } else {
+                    alert("❌ Sign-in failed: " + (result.error || "Invalid credentials"));
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("❌ Unable to connect to server!");
+            }
+        }
+
+        // UPDATED Sign Up
+        async function submitSignup() {
+            const name = document.getElementById("signupName").value.trim();
+            const email = document.getElementById("signupEmail").value.trim();
+            const password = document.getElementById("signupPassword").value.trim();
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+            if (!name || !email || !password || !confirmPassword) {
+                alert("❌ Please fill all the fields!");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert("❌ Passwords do not match!");
+                return;
+            }
+
+            const signupData = { name, email, password };
+
+            try {
+                const response = await fetch("http://localhost:8080/api/auth/signup", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(signupData)
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert("✅ Account created successfully!");
+                    closeSignup();
+                    document.getElementById("signupForm").reset();
+                    
+                    // Auto-login after signup
+                    currentUser = {
+                        token: result.token,
+                        name: name,
+                        email: email,
+                        userId: result.userId
+                    };
+                } else {
+                    alert("❌ Sign-up failed: " + (result.error || "Unknown error"));
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("❌ Unable to connect to server!");
+            }
+        }
+
+        function showProfile() {
+            if (!currentUser) {
+                alert("No user data available");
+                return;
+            }
+            document.getElementById('profileName').innerText = currentUser.name || "N/A";
+            document.getElementById('profileEmail').innerText = currentUser.email || "N/A";
+            document.getElementById("profileModal").style.display = "flex";
+        }
+
+        function closeProfile() {
+            document.getElementById("profileModal").style.display = "none";
+        }
+
+        function logout() {
+            currentUser = null;
+            closeProfile();
+            alert("Logged out successfully");
+        }
+    </script>
+</body>
+</html>
